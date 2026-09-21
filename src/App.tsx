@@ -5,6 +5,7 @@ import { ChecklistCard } from './components/ChecklistCard';
 import { RawDataInputs } from './components/RawDataInputs';
 import { SummaryBox } from './components/SummaryBox';
 import { Toast } from './components/Toast';
+import { QRCodeModal } from './components/QRCodeModal';
 import { SUICIDE_RISK_TEMPLATE } from './data/templates';
 import type { ChecklistState, ItemOption, RawDataState } from './types';
 import { generateSummary } from './utils/summaryGenerator';
@@ -67,6 +68,7 @@ export const App: React.FC = () => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [showResetConfirm, setShowResetConfirm] = useState<boolean>(false);
   const [showSummaryModal, setShowSummaryModal] = useState<boolean>(false);
+  const [showQRModal, setShowQRModal] = useState<boolean>(false);
 
   // Auto-save state to LocalStorage for offline resilience
   useEffect(() => {
@@ -143,6 +145,7 @@ export const App: React.FC = () => {
       {/* Top Header */}
       <Header
         onReset={handleResetRequest}
+        onOpenQR={() => setShowQRModal(true)}
         completedCount={completedCount}
         totalCount={totalCount}
       />
@@ -233,6 +236,13 @@ export const App: React.FC = () => {
         onClose={() => setShowSummaryModal(false)}
         summaryText={currentSummary}
         onCopySuccess={() => triggerToast('คัดลอก Auto-Summary เรียบร้อยแล้ว!')}
+      />
+
+      {/* QR Code / Share Modal */}
+      <QRCodeModal
+        isOpen={showQRModal}
+        onClose={() => setShowQRModal(false)}
+        onCopySuccess={() => triggerToast('คัดลอกลิงก์เรียบร้อยแล้ว!')}
       />
 
       {/* Reset Confirmation Modal */}

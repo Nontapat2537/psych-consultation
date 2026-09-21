@@ -1,13 +1,14 @@
 
-import { Stethoscope, RotateCcw, ShieldCheck } from 'lucide-react';
+import { Stethoscope, RotateCcw, ShieldCheck, QrCode } from 'lucide-react';
 
 interface HeaderProps {
   onReset: () => void;
+  onOpenQR: () => void;
   completedCount: number;
   totalCount: number;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onReset, completedCount, totalCount }) => {
+export const Header: React.FC<HeaderProps> = ({ onReset, onOpenQR, completedCount, totalCount }) => {
   return (
     <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white px-4 py-3 shadow-lg">
       <div className="max-w-3xl mx-auto flex items-center justify-between">
@@ -30,7 +31,7 @@ export const Header: React.FC<HeaderProps> = ({ onReset, completedCount, totalCo
         </div>
 
         <div className="flex items-center space-x-2">
-          <div className="text-right mr-1">
+          <div className="text-right mr-1 hidden xs:block">
             <span className="text-[11px] font-semibold text-slate-400 block uppercase tracking-wider">
               ติ้กแล้ว
             </span>
@@ -38,6 +39,16 @@ export const Header: React.FC<HeaderProps> = ({ onReset, completedCount, totalCo
               {completedCount} <span className="text-slate-500 text-xs">/ {totalCount}</span>
             </span>
           </div>
+
+          <button
+            type="button"
+            onClick={onOpenQR}
+            className="flex items-center gap-1.5 bg-teal-500/10 hover:bg-teal-500/20 active:scale-95 text-teal-300 text-xs px-2.5 py-2 rounded-lg border border-teal-500/30 transition-all shadow-sm cursor-pointer select-none"
+            title="เปิด QR Code สำหรับมือถือ / แชร์แอป"
+          >
+            <QrCode className="w-3.5 h-3.5 text-teal-400" />
+            <span className="font-semibold hidden sm:inline">QR มือถือ</span>
+          </button>
 
           <button
             type="button"
@@ -49,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({ onReset, completedCount, totalCo
             title="ล้างข้อมูลเริ่มเคสใหม่"
           >
             <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
-            <span className="font-semibold">เคสใหม่ (ล้างข้อมูล)</span>
+            <span className="font-semibold">เคสใหม่</span>
           </button>
         </div>
       </div>
