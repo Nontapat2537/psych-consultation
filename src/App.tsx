@@ -154,17 +154,17 @@ export const App: React.FC = () => {
       <TemplateTabs activeId={activeTemplateId} onSelect={setActiveTemplateId} />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-3xl w-full mx-auto p-4 space-y-5">
+      <main className="flex-1 max-w-3xl w-full mx-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
         {/* Template Info & Quick Actions Banner */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
-          <div>
+        <div className="bg-slate-900/90 border border-slate-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-3 shadow-sm">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
-              <h2 className="text-base font-bold text-slate-100">
+              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse flex-shrink-0" />
+              <h2 className="text-sm sm:text-base font-bold text-slate-100 truncate">
                 {SUICIDE_RISK_TEMPLATE.titleTh}
               </h2>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 hidden xs:block">
               {SUICIDE_RISK_TEMPLATE.description}
             </p>
           </div>
@@ -172,7 +172,7 @@ export const App: React.FC = () => {
           <button
             type="button"
             onClick={quickFillNormal}
-            className="text-xs font-medium bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 px-3 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 flex-shrink-0"
+            className="w-full sm:w-auto text-xs font-medium bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 px-3 py-1.5 sm:py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 flex-shrink-0"
           >
             <Sparkles className="w-3.5 h-3.5 text-teal-400" />
             <span>Quick-Fill: ปฏิเสธทั้งหมด</span>

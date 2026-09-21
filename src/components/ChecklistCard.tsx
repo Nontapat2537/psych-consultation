@@ -17,7 +17,7 @@ export const ChecklistCard: React.FC<ChecklistCardProps> = ({
 
   return (
     <div
-      className={`rounded-2xl p-4 transition-all border ${
+      className={`rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all border ${
         isSelected
           ? 'bg-slate-800/90 border-slate-700 shadow-md ring-1 ring-teal-500/20'
           : 'bg-slate-900/60 border-slate-800/80 hover:border-slate-700/60'
